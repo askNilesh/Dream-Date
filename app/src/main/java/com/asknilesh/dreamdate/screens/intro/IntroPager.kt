@@ -3,23 +3,24 @@ package com.asknilesh.dreamdate.screens.intro
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.asknilesh.dreamdate.common_components.PageIndicator
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.rememberPagerState
 
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalPagerApi::class)
 @Composable
 fun BuildIntroPager() {
   val pagerState = rememberPagerState()
 
   Column() {
     HorizontalPager(
-      pageCount = 3,
+      count = 3,
       state = pagerState,
       modifier = Modifier
         .fillMaxWidth()

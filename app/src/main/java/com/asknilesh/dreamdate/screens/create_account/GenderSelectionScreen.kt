@@ -3,9 +3,7 @@ package com.asknilesh.dreamdate.screens.create_account
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,33 +20,25 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusProperties
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
+import com.asknilesh.dreamdate.R
 import com.asknilesh.dreamdate.common_components.CommonButton
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
+@Preview
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-fun VerifyOtpScreen(navController: NavHostController) {
-  val (item1, item2, item3, item4) = FocusRequester.createRefs()
-  val otpOne = remember {
-    mutableStateOf("")
+fun GenderSelectionScreen() {
+  val male = remember {
+    mutableStateOf(true)
   }
-  val otpTwo = remember {
-    mutableStateOf("")
-  }
-  val otpThree = remember {
-    mutableStateOf("")
-  }
-  val otpFour = remember {
-    mutableStateOf("")
+  val female = remember {
+    mutableStateOf(false)
   }
   Scaffold(
     modifier = Modifier
@@ -72,53 +62,31 @@ fun VerifyOtpScreen(navController: NavHostController) {
         })
       Spacer(modifier = Modifier.height(20.dp))
       CommonTextForSignUp(
-        title = "OTP Verification",
-        body = "Need to verify OTP sent on your mobile number. We have sent a verification code to +92 123 123 1234"
+        title = "Gender selection",
+        body = "Gender can’t be change once submited!"
       )
       Spacer(modifier = Modifier.height(20.dp))
 
-      Row(
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.fillMaxWidth()
+      GenderSelectionCard(
+        genderText = "Male",
+        genderState = male,
+        painter = painterResource(id = R.drawable.ic_male)
       ) {
-        OtpView(
-          modifier = Modifier
-            .focusRequester(item1)
-            .focusProperties {
-              next = item2
-              previous = item1
-            },
-          textState = otpOne
-        )
-        OtpView(
-          modifier = Modifier
-            .focusRequester(item2)
-            .focusProperties {
-              next = item3
-              previous = item1
-            },
-          textState = otpTwo
-        )
-        OtpView(
-          modifier = Modifier
-            .focusRequester(item3)
-            .focusProperties {
-              next = item4
-              previous = item2
-            },
-          textState = otpThree
-        )
-        OtpView(
-          modifier = Modifier
-            .focusRequester(item4)
-            .focusProperties {
-              previous = item3
-              next = item4
-            },
-          textState = otpFour
-        )
+        male.value = !male.value
+        if (male.value) {
+          female.value = false
+        }
+      }
 
+      GenderSelectionCard(
+        genderText = "Female",
+        genderState = female,
+        painter = painterResource(id = R.drawable.ic_female)
+      ) {
+        female.value = !female.value
+        if (female.value) {
+          male.value = false
+        }
       }
 
       Spacer(
@@ -127,12 +95,7 @@ fun VerifyOtpScreen(navController: NavHostController) {
           .weight(1f),
       )
       CommonButton(
-        buttonText = "Verify", enabled = (
-          otpOne.value.isNotEmpty() &&
-            otpTwo.value.isNotEmpty() &&
-            otpThree.value.isNotEmpty() &&
-            otpFour.value.isNotEmpty()
-          )
+        buttonText = "Next",
       ) {
         // navController.navigate(VERIFY_OTP_SCREEN.name)
       }

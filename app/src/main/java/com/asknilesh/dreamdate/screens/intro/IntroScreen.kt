@@ -6,8 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -20,8 +18,13 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.asknilesh.dreamdate.common_components.PageIndicator
 import com.asknilesh.dreamdate.navigation.DreamDateScreens
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.rememberPagerState
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class,
+  ExperimentalPagerApi::class
+)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun IntroScreen(navController: NavController) {
@@ -35,7 +38,7 @@ fun IntroScreen(navController: NavController) {
       horizontalAlignment = Alignment.End
     ) {
       HorizontalPager(
-        pageCount = 3,
+        count = 3,
         state = pagerState,
         modifier = Modifier
           .fillMaxWidth()
