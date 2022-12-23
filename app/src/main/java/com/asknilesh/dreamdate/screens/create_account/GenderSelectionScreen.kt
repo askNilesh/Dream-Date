@@ -24,16 +24,16 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.asknilesh.dreamdate.R
 import com.asknilesh.dreamdate.common_components.CommonButton
+import com.asknilesh.dreamdate.navigation.DreamDateScreens.SELECT_USER_NAME_SCREEN
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
-@Preview
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-fun GenderSelectionScreen() {
+fun GenderSelectionScreen(navController: NavHostController) {
   val male = remember {
     mutableStateOf(true)
   }
@@ -97,7 +97,7 @@ fun GenderSelectionScreen() {
       CommonButton(
         buttonText = "Next",
       ) {
-        // navController.navigate(VERIFY_OTP_SCREEN.name)
+        navController.navigate(SELECT_USER_NAME_SCREEN.name)
       }
 
     }

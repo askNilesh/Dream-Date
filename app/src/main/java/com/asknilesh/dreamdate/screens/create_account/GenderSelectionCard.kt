@@ -1,5 +1,6 @@
 package com.asknilesh.dreamdate.screens.create_account
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -30,6 +31,7 @@ import com.asknilesh.dreamdate.ui.theme.ButtonColor
 import com.asknilesh.dreamdate.ui.theme.LightGrey
 
 @OptIn(ExperimentalMaterial3Api::class)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 @Preview
 fun GenderSelectionCard(

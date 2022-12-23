@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.asknilesh.dreamdate.screens.create_account.EnterPhoneNumberScreen
 import com.asknilesh.dreamdate.screens.create_account.GenderSelectionScreen
+import com.asknilesh.dreamdate.screens.create_account.SelectUserNameScreen
 import com.asknilesh.dreamdate.screens.create_account.VerifyOtpScreen
 import com.asknilesh.dreamdate.screens.intro.IntroScreen
 import com.asknilesh.dreamdate.screens.login.LoginScreen
@@ -15,7 +16,7 @@ fun DreamDateNavigation() {
   val navController = rememberNavController()
   NavHost(
     navController = navController,
-    startDestination = DreamDateScreens.GENDER_SELECTION_SCREEN.name
+    startDestination = DreamDateScreens.SELECT_USER_NAME_SCREEN.name
   ) {
 
     composable(DreamDateScreens.INTRO_SCREEN.name) {
@@ -34,7 +35,10 @@ fun DreamDateNavigation() {
     }
 
     composable(DreamDateScreens.GENDER_SELECTION_SCREEN.name) {
-      GenderSelectionScreen()
+      GenderSelectionScreen(navController = navController)
+    }
+    composable(DreamDateScreens.SELECT_USER_NAME_SCREEN.name) {
+      SelectUserNameScreen(navController = navController)
     }
 
   }
