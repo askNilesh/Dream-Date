@@ -6,13 +6,9 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.ime
-import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -33,22 +29,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.asknilesh.dreamdate.R
 import com.asknilesh.dreamdate.common_components.CommonButton
 import com.asknilesh.dreamdate.common_components.PrefixTransformation
+import com.asknilesh.dreamdate.navigation.DreamDateScreens
 import com.asknilesh.dreamdate.ui.theme.LightGrey
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
-@Composable @Preview(showSystemUi = true)
-fun EnterPhoneNumberScreen() {
+@Composable
+fun EnterPhoneNumberScreen(navController: NavController) {
   val countryState = remember {
     mutableStateOf("")
   }
@@ -58,8 +54,7 @@ fun EnterPhoneNumberScreen() {
   Scaffold(
     modifier = Modifier
       .fillMaxWidth()
-      .fillMaxHeight()
-    ,
+      .fillMaxHeight(),
     containerColor = Color.Black,
   ) { paddings ->
 
@@ -67,7 +62,7 @@ fun EnterPhoneNumberScreen() {
       modifier = Modifier
         .fillMaxWidth()
         .fillMaxHeight()
-        .padding( 20.dp )
+        .padding(20.dp)
         .verticalScroll(rememberScrollState())
     ) {
       Spacer(modifier = Modifier.height(10.dp))
@@ -78,23 +73,11 @@ fun EnterPhoneNumberScreen() {
 
         })
       Spacer(modifier = Modifier.height(20.dp))
-
-      Text(
-        text = "Let’s get started!",
-        style = MaterialTheme.typography.headlineSmall,
-        color = Color.White,
-        textAlign = TextAlign.Center,
-        fontWeight = FontWeight.Bold
+      CommonTextForSignUp(
+        title = "Let’s get started!",
+        body = "Welcome to Dream Date."
       )
 
-      Spacer(modifier = Modifier.height(5.dp))
-
-      Text(
-        text = "Welcome to Dream Date.",
-        style = MaterialTheme.typography.bodyLarge,
-        textAlign = TextAlign.Justify,
-        color = Color.DarkGray
-      )
       Spacer(modifier = Modifier.height(40.dp))
 
       TextField(
@@ -192,8 +175,9 @@ fun EnterPhoneNumberScreen() {
           .background(Color.Blue)
           .weight(1f),
       )
-      CommonButton(buttonText = "Next")
-
+      CommonButton(buttonText = "Next") {
+        navController.navigate(DreamDateScreens.VERIFY_OTP_SCREEN.name)
+      }
 
     }
 

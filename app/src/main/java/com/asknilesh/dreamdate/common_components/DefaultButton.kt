@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.asknilesh.dreamdate.ui.theme.ButtonColor
+import com.asknilesh.dreamdate.ui.theme.LightGrey
 
 @Composable
 @Preview
@@ -17,14 +18,18 @@ fun CommonButton(
   buttonText: String = "Continue",
   buttonContainerColor: Color = ButtonColor,
   contentColor: Color = Color.White,
+  enabled : Boolean = true,
   onClick: () -> Unit = { }
 ) {
   ElevatedButton(
     onClick = { onClick() },
     modifier = modifier,
+    enabled = enabled,
     colors = ButtonDefaults.buttonColors(
       containerColor = buttonContainerColor,
-      contentColor = contentColor
+      contentColor = contentColor,
+      disabledContainerColor = buttonContainerColor.copy(alpha = 0.8f),
+      disabledContentColor = LightGrey
     )
   ) {
     Text(text = buttonText)
