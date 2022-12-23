@@ -12,3 +12,5 @@ val Pink40 = Color(0xFF7D5260)
 
 
 val SocialButtonColor = Color(0xFF1AFFFFFF)
+val LightGrey = Color(0xFF81818A)
+val ButtonColor = Color(0xFFE76944)

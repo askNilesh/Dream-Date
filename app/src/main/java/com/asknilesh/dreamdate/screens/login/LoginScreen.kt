@@ -11,10 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.asknilesh.dreamdate.common_components.BuildAppNameAndLogo
 
 @Composable
-fun LoginScreen(/*navController: NavHostController*/) {
+fun LoginScreen(navController: NavHostController) {
 
   val uriHandler = LocalUriHandler.current
 
