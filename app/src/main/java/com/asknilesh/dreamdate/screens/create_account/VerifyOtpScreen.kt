@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.asknilesh.dreamdate.common_components.CommonButton
+import com.asknilesh.dreamdate.navigation.DreamDateScreens
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
@@ -134,7 +135,7 @@ fun VerifyOtpScreen(navController: NavHostController) {
             otpFour.value.isNotEmpty()
           )
       ) {
-        // navController.navigate(VERIFY_OTP_SCREEN.name)
+        navController.navigate(DreamDateScreens.GENDER_SELECTION_SCREEN.name)
       }
 
     }

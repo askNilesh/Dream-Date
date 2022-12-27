@@ -17,7 +17,7 @@ fun DreamDateNavigation() {
   val navController = rememberNavController()
   NavHost(
     navController = navController,
-    startDestination = DreamDateScreens.HOME_SCREEN.name
+    startDestination = DreamDateScreens.INTRO_SCREEN.name
   ) {
 
     composable(DreamDateScreens.INTRO_SCREEN.name) {

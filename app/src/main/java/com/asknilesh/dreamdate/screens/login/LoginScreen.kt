@@ -13,6 +13,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.asknilesh.dreamdate.common_components.BuildAppNameAndLogo
+import com.asknilesh.dreamdate.navigation.DreamDateScreens
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
@@ -33,6 +34,7 @@ fun LoginScreen(navController: NavHostController) {
         .fillMaxWidth()
         .padding(horizontal = 30.dp)
     ) {
+      navController.navigate(DreamDateScreens.ENTER_PHONE_NUMBER_SCREEN.name)
     }
     BuildTermAndPrivacy(modifier = Modifier
       .fillMaxWidth()
