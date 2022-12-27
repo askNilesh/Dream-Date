@@ -1,7 +1,9 @@
 package com.asknilesh.dreamdate.screens.homescreen
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -34,7 +36,9 @@ fun HomeScreen(navController: NavHostController) {
   Scaffold(
     bottomBar = { BottomNavigationView(navController = navController2) }
   ) {
-    NavigationGraph(navController = navController2)
+    Box(modifier = Modifier.padding(it)) {
+      NavigationGraph(navController = navController2)
+    }
   }
 }
 
@@ -52,7 +56,8 @@ fun BottomNavigationView(navController: NavController) {
   )
   NavigationBar(
     containerColor = Color.Black,
-    modifier = Modifier.height(50.dp)
+    modifier = Modifier.height(50.dp),
+
   ) {
     items.forEachIndexed { index, item ->
       NavigationBarItem(
