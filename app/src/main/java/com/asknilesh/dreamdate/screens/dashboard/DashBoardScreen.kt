@@ -30,14 +30,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.asknilesh.dreamdate.common_components.AnimateTextStyleAsState
 import com.asknilesh.dreamdate.common_components.HomeScreenActionBar
 import com.asknilesh.dreamdate.screens.dashboard.CurrentTab.Following
@@ -53,17 +51,13 @@ enum class CurrentTab {
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalPagerApi::class)
 @Composable
-@Preview
-fun DashBoardScreen(navController: NavHostController = NavHostController(LocalContext.current)) {
+fun DashBoardScreen(mainNavController: NavController) {
 
   val selectedContentType = remember {
     mutableStateOf(ForYou)
   }
 
-  val appBarState = rememberTopAppBarState()
-
   val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
-
 
   Scaffold(
     modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -81,6 +75,7 @@ fun DashBoardScreen(navController: NavHostController = NavHostController(LocalCo
           tint = Color.White
         )
       }
+
     },
   ) { innerPadding ->
     Column(
@@ -92,8 +87,8 @@ fun DashBoardScreen(navController: NavHostController = NavHostController(LocalCo
       BuildHeaderTabsSection(selectedContentType)
       Spacer(modifier = Modifier.height(10.dp))
       when (selectedContentType.value) {
-        ForYou -> DashBoardForYouScreen(navController = navController)
-        Following -> DashBoardFollowingScreen()
+        ForYou -> DashBoardForYouScreen(navController = mainNavController)
+        Following -> DashBoardFollowingScreen(navController = mainNavController)
       }
     }
 

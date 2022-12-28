@@ -23,21 +23,21 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.asknilesh.dreamdate.navigation.NavigationGraph
+import com.asknilesh.dreamdate.navigation.BottomNavigationBarGraph
 import com.asknilesh.dreamdate.ui.theme.ButtonColor
 import com.asknilesh.dreamdate.ui.theme.LightGrey
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun HomeScreen(mainNavController: NavController) {
   val navController2: NavHostController = rememberNavController()
 
   Scaffold(
     bottomBar = { BottomNavigationView(navController = navController2) }
   ) {
     Box(modifier = Modifier.padding(it)) {
-      NavigationGraph(navController = navController2)
+      BottomNavigationBarGraph(navController = navController2, mainNavController)
     }
   }
 }
@@ -58,7 +58,7 @@ fun BottomNavigationView(navController: NavController) {
     containerColor = Color.Black,
     modifier = Modifier.height(50.dp),
 
-  ) {
+    ) {
     items.forEachIndexed { index, item ->
       NavigationBarItem(
         icon = {

@@ -10,14 +10,18 @@ import com.asknilesh.dreamdate.screens.create_account.SelectUserNameScreen
 import com.asknilesh.dreamdate.screens.create_account.VerifyOtpScreen
 import com.asknilesh.dreamdate.screens.homescreen.HomeScreen
 import com.asknilesh.dreamdate.screens.intro.IntroScreen
+import com.asknilesh.dreamdate.screens.live.UserLiveScreen
 import com.asknilesh.dreamdate.screens.login.LoginScreen
+
+const val ROOT_ROUTE = "ROOT_ROUTE"
 
 @Composable
 fun DreamDateNavigation() {
   val navController = rememberNavController()
   NavHost(
     navController = navController,
-    startDestination = DreamDateScreens.INTRO_SCREEN.name
+    startDestination = DreamDateScreens.HOME_SCREEN.name,
+    route = ROOT_ROUTE
   ) {
 
     composable(DreamDateScreens.INTRO_SCREEN.name) {
@@ -42,7 +46,12 @@ fun DreamDateNavigation() {
       SelectUserNameScreen(navController = navController)
     }
     composable(DreamDateScreens.HOME_SCREEN.name) {
-      HomeScreen(navController = navController)
+      HomeScreen(navController)
+    }
+
+
+    composable(DreamDateScreens.LIVE_SCREEN.name) {
+      UserLiveScreen(navController = navController)
     }
 
   }

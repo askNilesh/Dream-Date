@@ -3,6 +3,7 @@ package com.asknilesh.dreamdate.screens.dashboard
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,7 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -38,6 +38,7 @@ import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import com.asknilesh.dreamdate.model.ForYouModel
 import com.asknilesh.dreamdate.model.getForYouPageList
+import com.asknilesh.dreamdate.navigation.DreamDateScreens
 import com.asknilesh.dreamdate.ui.theme.ButtonColor
 import com.asknilesh.dreamdate.ui.theme.LightGrey
 
@@ -46,25 +47,23 @@ fun DashBoardForYouScreen(navController: NavController) {
   val models = getForYouPageList()
   LazyVerticalGrid(columns = GridCells.Fixed(2)) {
     items(models) { model ->
-      BuildForYouCard(model)
+      BuildForYouCard(model) {
+        navController.navigate(DreamDateScreens.LIVE_SCREEN.name)
+      }
     }
   }
 }
 
-@Preview
 @Composable
 fun BuildForYouCard(
-  model: ForYouModel = ForYouModel(
-    userName = "lil_cutie",
-    totalFollower = "12K followers",
-    liveUserCount = "3.8K",
-    isLive = true,
-    userImage = "https://images.unsplash.com/photo-1621317911081-f123294e86c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Z2lybCUyMGFsb25lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-    posterImage = "https://images.unsplash.com/photo-1619855544858-e8e275c3b31a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z2lybCUyMGFsb25lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-  )
+  model: ForYouModel,
+  onCardClick: () -> Unit = {}
 ) {
 
-  Box(modifier = Modifier.padding(2.dp)) {
+  Box(modifier = Modifier.padding(2.dp)
+    .clickable {
+      onCardClick.invoke()
+    }) {
     AsyncImage(
       model = model.posterImage,
       contentDescription = null,
