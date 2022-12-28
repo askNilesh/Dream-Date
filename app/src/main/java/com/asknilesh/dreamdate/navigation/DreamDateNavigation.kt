@@ -12,6 +12,7 @@ import com.asknilesh.dreamdate.screens.homescreen.HomeScreen
 import com.asknilesh.dreamdate.screens.intro.IntroScreen
 import com.asknilesh.dreamdate.screens.live.UserLiveScreen
 import com.asknilesh.dreamdate.screens.login.LoginScreen
+import com.asknilesh.dreamdate.screens.notification.NotificationScreen
 
 const val ROOT_ROUTE = "ROOT_ROUTE"
 
@@ -52,6 +53,9 @@ fun DreamDateNavigation() {
 
     composable(DreamDateScreens.LIVE_SCREEN.name) {
       UserLiveScreen(navController = navController)
+    }
+    composable(DreamDateScreens.NOTIFICATION_SCREEN.name) {
+      NotificationScreen(navController = navController)
     }
 
   }

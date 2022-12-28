@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.asknilesh.dreamdate.common_components.AnimateTextStyleAsState
 import com.asknilesh.dreamdate.common_components.HomeScreenActionBar
+import com.asknilesh.dreamdate.navigation.DreamDateScreens
 import com.asknilesh.dreamdate.screens.dashboard.CurrentTab.Following
 import com.asknilesh.dreamdate.screens.dashboard.CurrentTab.ForYou
 import com.asknilesh.dreamdate.ui.theme.ButtonColor
@@ -53,7 +54,7 @@ enum class CurrentTab {
 @Composable
 fun DashBoardScreen(mainNavController: NavController) {
 
-  val selectedContentType = rememberSaveable() {
+  val selectedContentType = rememberSaveable {
     mutableStateOf(ForYou)
   }
 
@@ -61,7 +62,11 @@ fun DashBoardScreen(mainNavController: NavController) {
 
   Scaffold(
     modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-    topBar = { HomeScreenActionBar(scrollBehavior = scrollBehavior) },
+    topBar = {
+      HomeScreenActionBar(scrollBehavior = scrollBehavior, onNotificationClick = {
+        mainNavController.navigate(DreamDateScreens.NOTIFICATION_SCREEN.name)
+      })
+    },
     containerColor = Color.Black,
     floatingActionButtonPosition = FabPosition.Center,
     floatingActionButton = {
