@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells.Fixed
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -45,15 +46,14 @@ import com.asknilesh.dreamdate.model.getFollowingList
 import com.asknilesh.dreamdate.navigation.DreamDateScreens
 import com.asknilesh.dreamdate.ui.theme.ButtonColor
 import com.asknilesh.dreamdate.ui.theme.CallButtonColor
-import com.asknilesh.dreamdate.ui.theme.LightGrey
 
 @Composable
 fun DashBoardFollowingScreen(navController: NavController) {
   val models = getFollowingList()
   LazyVerticalGrid(columns = Fixed(2)) {
     items(models) { model ->
-      BuildForYouCard(model){
-        navController.navigate(DreamDateScreens.LIVE_SCREEN.name, )
+      BuildForYouCard(model) {
+        navController.navigate(DreamDateScreens.LIVE_SCREEN.name)
       }
     }
   }
@@ -73,9 +73,11 @@ fun BuildForYouCard(
   onCardClick: () -> Unit = {}
 ) {
 
-  Box(modifier = Modifier.padding(2.dp).clickable {
-    onCardClick.invoke()
-  }) {
+  Box(modifier = Modifier
+    .padding(2.dp)
+    .clickable {
+      onCardClick.invoke()
+    }) {
     AsyncImage(
       model = model.posterImage,
       contentDescription = null,
@@ -170,7 +172,7 @@ fun BuildForYouCard(
             fontSize = 14.sp,
           )
           Text(
-            text = model.totalFollower, color = LightGrey,
+            text = model.totalFollower, color = Color.White,
             fontSize = 12.sp,
           )
         }
@@ -181,14 +183,15 @@ fun BuildForYouCard(
           modifier = Modifier
             .width(30.dp)
             .height(30.dp)
-            .padding(end = 5.dp)
             .clip(CircleShape)
         ) {
           Icon(
             imageVector = Outlined.Call, contentDescription = "Call",
-            tint = Color.White
+            tint = Color.White,
+            modifier = Modifier.size(20.dp)
           )
         }
+        Spacer(modifier = Modifier.width(5.dp))
 
       }
     }
