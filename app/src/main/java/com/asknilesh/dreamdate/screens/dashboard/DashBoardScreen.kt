@@ -63,15 +63,22 @@ fun DashBoardScreen(mainNavController: NavController) {
   Scaffold(
     modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     topBar = {
-      HomeScreenActionBar(scrollBehavior = scrollBehavior, onNotificationClick = {
-        mainNavController.navigate(DreamDateScreens.NOTIFICATION_SCREEN.name)
-      })
+      HomeScreenActionBar(scrollBehavior = scrollBehavior,
+        onNotificationClick = {
+          mainNavController.navigate(DreamDateScreens.NOTIFICATION_SCREEN.name)
+
+        }, onAddPostClick = {
+          mainNavController.navigate(DreamDateScreens.ADD_NEW_POST_SCREEN.name)
+        }
+      )
     },
     containerColor = Color.Black,
     floatingActionButtonPosition = FabPosition.Center,
     floatingActionButton = {
       FloatingActionButton(
-        onClick = { },
+        onClick = {
+          mainNavController.navigate(DreamDateScreens.LIVE_SCREEN.name)
+        },
         shape = CircleShape,
         containerColor = ButtonColor,
       ) {

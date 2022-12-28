@@ -13,6 +13,7 @@ import com.asknilesh.dreamdate.screens.intro.IntroScreen
 import com.asknilesh.dreamdate.screens.live.UserLiveScreen
 import com.asknilesh.dreamdate.screens.login.LoginScreen
 import com.asknilesh.dreamdate.screens.notification.NotificationScreen
+import com.asknilesh.dreamdate.screens.post_screen.NewPostScreen
 
 const val ROOT_ROUTE = "ROOT_ROUTE"
 
@@ -24,22 +25,18 @@ fun DreamDateNavigation() {
     startDestination = DreamDateScreens.HOME_SCREEN.name,
     route = ROOT_ROUTE
   ) {
-
     composable(DreamDateScreens.INTRO_SCREEN.name) {
       IntroScreen(navController = navController)
     }
-
     composable(DreamDateScreens.LOGIN_SCREEN.name) {
       LoginScreen(navController = navController)
     }
-
     composable(DreamDateScreens.ENTER_PHONE_NUMBER_SCREEN.name) {
       EnterPhoneNumberScreen(navController = navController)
     }
     composable(DreamDateScreens.VERIFY_OTP_SCREEN.name) {
       VerifyOtpScreen(navController = navController)
     }
-
     composable(DreamDateScreens.GENDER_SELECTION_SCREEN.name) {
       GenderSelectionScreen(navController = navController)
     }
@@ -49,13 +46,14 @@ fun DreamDateNavigation() {
     composable(DreamDateScreens.HOME_SCREEN.name) {
       HomeScreen(navController)
     }
-
-
     composable(DreamDateScreens.LIVE_SCREEN.name) {
       UserLiveScreen(navController = navController)
     }
     composable(DreamDateScreens.NOTIFICATION_SCREEN.name) {
       NotificationScreen(navController = navController)
+    }
+    composable(DreamDateScreens.ADD_NEW_POST_SCREEN.name) {
+      NewPostScreen(navController = navController)
     }
 
   }
