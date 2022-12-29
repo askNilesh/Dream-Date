@@ -57,7 +57,7 @@ fun DreamDateNavigation() {
       NewPostScreen(navController = navController)
     }
     composable(DreamDateScreens.USER_PROFILE_SCREEN.name) {
-      UserProfileScreen()
+      UserProfileScreen(navController)
     }
 
   }
