@@ -41,7 +41,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.asknilesh.dreamdate.R.drawable
 import com.asknilesh.dreamdate.ui.theme.CallButtonColor
 import com.asknilesh.dreamdate.ui.theme.LightGrey
@@ -50,7 +50,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterialApi::class, ExperimentalMaterial3Api::class)
 @Composable
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-fun UserProfileScreen(navController: NavHostController) {
+fun UserProfileScreen(navController: NavController) {
   val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior(rememberTopAppBarState())
 
   val modalBottomSheetState =
@@ -101,7 +101,7 @@ fun UserProfileScreen(navController: NavHostController) {
           .fillMaxHeight()
       ) {
         Spacer(modifier = Modifier.height(20.dp))
-        ProfileDetailsSection()
+        ProfileDetailsSection(navController)
         Spacer(modifier = Modifier.height(15.dp))
 
         Text(

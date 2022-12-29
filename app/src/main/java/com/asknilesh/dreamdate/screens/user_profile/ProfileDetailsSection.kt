@@ -2,6 +2,7 @@ package com.asknilesh.dreamdate.screens.user_profile
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,10 +23,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImagePainter.State.Error
 import coil.compose.AsyncImagePainter.State.Loading
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
+import com.asknilesh.dreamdate.navigation.DreamDateScreens.USER_FOLLOWERS_SCREEN
 import com.asknilesh.dreamdate.ui.theme.ButtonColor
 
 const val userImage =
@@ -33,7 +36,7 @@ const val userImage =
 
 @Composable
 @Preview
-fun ProfileDetailsSection() {
+fun ProfileDetailsSection(navController: NavController) {
   Row(
     modifier = Modifier.fillMaxWidth(),
     horizontalArrangement = Arrangement.SpaceBetween,
@@ -63,8 +66,12 @@ fun ProfileDetailsSection() {
       }
     }
     BuildProfileDetail(title = "225", body = "Posts")
-    BuildProfileDetail(title = "300", body = "Following")
-    BuildProfileDetail(title = "500K", body = "Followers")
+    BuildProfileDetail(title = "300", body = "Following") {
+      navController.navigate(USER_FOLLOWERS_SCREEN.name)
+    }
+    BuildProfileDetail(title = "500K", body = "Followers") {
+      navController.navigate(USER_FOLLOWERS_SCREEN.name)
+    }
   }
 }
 
@@ -72,11 +79,15 @@ fun ProfileDetailsSection() {
 @Composable
 fun BuildProfileDetail(
   title: String = "226",
-  body: String = "Posts"
+  body: String = "Posts",
+  onClick: () -> Unit = {}
 ) {
   Column(
     horizontalAlignment = Alignment.CenterHorizontally,
-    verticalArrangement = Arrangement.Center
+    verticalArrangement = Arrangement.Center,
+    modifier = Modifier.clickable {
+      onClick.invoke()
+    }
   ) {
     Text(text = title, color = Color.White, fontWeight = FontWeight.Bold, fontSize = 18.sp)
     Spacer(modifier = Modifier.height(5.dp))

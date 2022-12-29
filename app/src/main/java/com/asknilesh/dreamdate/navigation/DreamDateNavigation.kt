@@ -8,6 +8,7 @@ import com.asknilesh.dreamdate.screens.create_account.EnterPhoneNumberScreen
 import com.asknilesh.dreamdate.screens.create_account.GenderSelectionScreen
 import com.asknilesh.dreamdate.screens.create_account.SelectUserNameScreen
 import com.asknilesh.dreamdate.screens.create_account.VerifyOtpScreen
+import com.asknilesh.dreamdate.screens.followers.UserFollowersScreen
 import com.asknilesh.dreamdate.screens.homescreen.HomeScreen
 import com.asknilesh.dreamdate.screens.intro.IntroScreen
 import com.asknilesh.dreamdate.screens.live.UserLiveScreen
@@ -58,6 +59,9 @@ fun DreamDateNavigation() {
     }
     composable(DreamDateScreens.USER_PROFILE_SCREEN.name) {
       UserProfileScreen(navController)
+    }
+    composable(DreamDateScreens.USER_FOLLOWERS_SCREEN.name) {
+      UserFollowersScreen()
     }
 
   }
