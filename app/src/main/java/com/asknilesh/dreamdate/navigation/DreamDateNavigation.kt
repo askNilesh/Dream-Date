@@ -14,6 +14,7 @@ import com.asknilesh.dreamdate.screens.live.UserLiveScreen
 import com.asknilesh.dreamdate.screens.login.LoginScreen
 import com.asknilesh.dreamdate.screens.notification.NotificationScreen
 import com.asknilesh.dreamdate.screens.post_screen.NewPostScreen
+import com.asknilesh.dreamdate.screens.user_profile.UserProfileScreen
 
 const val ROOT_ROUTE = "ROOT_ROUTE"
 
@@ -54,6 +55,9 @@ fun DreamDateNavigation() {
     }
     composable(DreamDateScreens.ADD_NEW_POST_SCREEN.name) {
       NewPostScreen(navController = navController)
+    }
+    composable(DreamDateScreens.USER_PROFILE_SCREEN.name) {
+      UserProfileScreen()
     }
 
   }
