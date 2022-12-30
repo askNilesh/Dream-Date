@@ -35,7 +35,6 @@ const val userImage =
   "https://images.unsplash.com/photo-1626818590242-5a5f27ee3971?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGdpcmwlMjBhbG9uZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
 
 @Composable
-@Preview
 fun ProfileDetailsSection(navController: NavController) {
   Row(
     modifier = Modifier.fillMaxWidth(),
