@@ -5,7 +5,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.asknilesh.dreamdate.screens.chat.MessagesScreen
+import com.asknilesh.dreamdate.screens.chat.ChatListScreen
 import com.asknilesh.dreamdate.screens.dashboard.DashBoardScreen
 import com.asknilesh.dreamdate.screens.explore.ExploreScreen
 import com.asknilesh.dreamdate.screens.live.UserLiveScreen
@@ -28,7 +28,7 @@ fun BottomNavigationBarGraph(navController: NavHostController, mainNavController
       ShortsScreen(navController = mainNavController)
     }
     composable(DreamDateScreens.MESSAGES_SCREEN.name) {
-      MessagesScreen(navController = mainNavController)
+      ChatListScreen(navController = mainNavController)
     }
     composable(DreamDateScreens.PROFILE_SCREEN.name) {
       ProfileScreen(navController = mainNavController)
