@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -67,7 +68,6 @@ fun UserProfileBottomSheetContent() {
           Toast.LENGTH_SHORT
         ).show()
       })
-    Spacer(modifier = Modifier.height(50.dp))
   }
 }
 
@@ -85,8 +85,9 @@ fun BottomSheetListItem(
       .height(55.dp)
       .padding(start = 15.dp), verticalAlignment = Alignment.CenterVertically
   ) {
-    Image(painter = painterResource(id = icon), contentDescription = title)
+    Image(painter = painterResource(id = icon), contentDescription = title,
+    modifier = Modifier.size(24.dp))
     Spacer(modifier = Modifier.width(20.dp))
-    Text(text = title, color = textColor)
+    Text(text = title, color = textColor , modifier = Modifier.fillMaxWidth().weight(1f))
   }
 }

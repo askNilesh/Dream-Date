@@ -12,7 +12,7 @@ data class ShortsModel(
 fun getShortsList() = mutableListOf(
   ShortsModel(
     userName = "lil_cutie",
-    following = true,
+    following = false,
     userImage = "https://images.unsplash.com/photo-1609241728358-53d49c22c01a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGdpcmwlMjBhbG9uZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
     caption = "I'm smiling reel big today",
     likes = "22K",

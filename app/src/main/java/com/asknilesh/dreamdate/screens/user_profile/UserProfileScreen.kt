@@ -55,6 +55,7 @@ fun UserProfileScreen(navController: NavController) {
 
   val modalBottomSheetState =
     rememberModalBottomSheetState(initialValue = Hidden)
+
   val scope = rememberCoroutineScope()
   BackHandler(enabled = modalBottomSheetState.isVisible) {
     scope.launch {
