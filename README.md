@@ -1,5 +1,6 @@
 # Dream Date
-# Dream Date app UI using Jetpack Compose.
+
+# Dream Date(Dating) app UI using Jetpack Compose.
 
 ### [Dream Date app video](https://youtu.be/i1cfpqNGL6U)
 
