@@ -37,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.asknilesh.dreamdate.model.MyFollowerModel
 import com.asknilesh.dreamdate.model.getMyFollowersList
 import com.asknilesh.dreamdate.screens.followers.FollowersScreenTabs.FOLLOWERS
@@ -52,8 +53,7 @@ enum class FollowersScreenTabs(val tabName: String) {
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Preview
-fun UserFollowersScreen() {
+fun UserFollowersScreen(navController: NavController) {
   var selectedTab by remember {
     mutableStateOf(FOLLOWINGS)
   }
@@ -68,7 +68,7 @@ fun UserFollowersScreen() {
       CenterAlignedTopAppBar(
         navigationIcon = {
           IconButton(onClick = {
-
+            navController.popBackStack()
           }) {
             Icon(
               imageVector = Icons.Default.ArrowBack,

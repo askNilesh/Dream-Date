@@ -62,7 +62,7 @@ fun DreamDateNavigation() {
       UserProfileScreen(navController)
     }
     composable(DreamDateScreens.USER_FOLLOWERS_SCREEN.name) {
-      UserFollowersScreen()
+      UserFollowersScreen(navController)
     }
     composable(DreamDateScreens.CHAT_SCREEN.name) {
       ChatScreen(navController)

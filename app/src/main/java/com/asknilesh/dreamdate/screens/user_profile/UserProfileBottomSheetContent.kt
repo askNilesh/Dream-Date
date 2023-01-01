@@ -35,7 +35,7 @@ fun UserProfileBottomSheetContent() {
     .wrapContentHeight()
     .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
     .background(Color(0xff1A1A27))
-    .padding(horizontal = 20.dp)) {
+    .padding(horizontal = 10.dp)) {
     Spacer(modifier = Modifier.height(20.dp))
     BottomSheetListItem(
       icon = R.drawable.ic_report,

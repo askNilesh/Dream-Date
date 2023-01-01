@@ -33,9 +33,6 @@ fun BottomNavigationBarGraph(navController: NavHostController, mainNavController
     composable(DreamDateScreens.PROFILE_SCREEN.name) {
       ProfileScreen(navController = mainNavController)
     }
-    composable(DreamDateScreens.PROFILE_SCREEN.name) {
-      ProfileScreen(navController = mainNavController)
-    }
 
     composable(DreamDateScreens.LIVE_SCREEN.name) {
       UserLiveScreen(navController = mainNavController)
