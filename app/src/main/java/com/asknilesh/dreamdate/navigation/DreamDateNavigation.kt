@@ -19,15 +19,12 @@ import com.asknilesh.dreamdate.screens.post_screen.NewPostScreen
 import com.asknilesh.dreamdate.screens.setting.SettingScreen
 import com.asknilesh.dreamdate.screens.user_profile.UserProfileScreen
 
-const val ROOT_ROUTE = "ROOT_ROUTE"
-
 @Composable
 fun DreamDateNavigation() {
   val navController = rememberNavController()
   NavHost(
     navController = navController,
-    startDestination = DreamDateScreens.HOME_SCREEN.name,
-    route = ROOT_ROUTE
+    startDestination = DreamDateScreens.INTRO_SCREEN.name,
   ) {
     composable(DreamDateScreens.INTRO_SCREEN.name) {
       IntroScreen(navController = navController)
