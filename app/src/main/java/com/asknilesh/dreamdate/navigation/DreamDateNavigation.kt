@@ -16,6 +16,7 @@ import com.asknilesh.dreamdate.screens.login.LoginScreen
 import com.asknilesh.dreamdate.screens.mesaage.ChatScreen
 import com.asknilesh.dreamdate.screens.notification.NotificationScreen
 import com.asknilesh.dreamdate.screens.post_screen.NewPostScreen
+import com.asknilesh.dreamdate.screens.setting.SettingScreen
 import com.asknilesh.dreamdate.screens.user_profile.UserProfileScreen
 
 const val ROOT_ROUTE = "ROOT_ROUTE"
@@ -66,6 +67,9 @@ fun DreamDateNavigation() {
     }
     composable(DreamDateScreens.CHAT_SCREEN.name) {
       ChatScreen(navController)
+    }
+    composable(DreamDateScreens.SETTING_SCREEN.name) {
+      SettingScreen(navController)
     }
 
   }

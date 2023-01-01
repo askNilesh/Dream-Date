@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.asknilesh.dreamdate.R.drawable
+import com.asknilesh.dreamdate.navigation.DreamDateScreens
 import com.asknilesh.dreamdate.screens.user_profile.ProfileDetailsSection
 import com.asknilesh.dreamdate.screens.user_profile.UserPostList
 import com.asknilesh.dreamdate.ui.theme.CallButtonColor
@@ -67,6 +68,7 @@ fun ProfileScreen(navController: NavController) {
       ProfileBottomSheetContent {
         scope.launch {
           modalBottomSheetState.hide()
+          navController.navigate(DreamDateScreens.SETTING_SCREEN.name)
         }
       }
     },
