@@ -13,6 +13,7 @@ import com.asknilesh.dreamdate.screens.homescreen.HomeScreen
 import com.asknilesh.dreamdate.screens.intro.IntroScreen
 import com.asknilesh.dreamdate.screens.live.UserLiveScreen
 import com.asknilesh.dreamdate.screens.login.LoginScreen
+import com.asknilesh.dreamdate.screens.mesaage.ChatScreen
 import com.asknilesh.dreamdate.screens.notification.NotificationScreen
 import com.asknilesh.dreamdate.screens.post_screen.NewPostScreen
 import com.asknilesh.dreamdate.screens.user_profile.UserProfileScreen
@@ -62,6 +63,9 @@ fun DreamDateNavigation() {
     }
     composable(DreamDateScreens.USER_FOLLOWERS_SCREEN.name) {
       UserFollowersScreen()
+    }
+    composable(DreamDateScreens.CHAT_SCREEN.name) {
+      ChatScreen(navController)
     }
 
   }

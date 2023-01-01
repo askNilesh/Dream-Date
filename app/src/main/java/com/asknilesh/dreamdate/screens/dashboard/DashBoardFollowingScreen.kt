@@ -41,6 +41,7 @@ import coil.compose.AsyncImagePainter.State.Error
 import coil.compose.AsyncImagePainter.State.Loading
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
+import com.asknilesh.dreamdate.common_components.circularReveal
 import com.asknilesh.dreamdate.model.FollowingModel
 import com.asknilesh.dreamdate.model.getFollowingList
 import com.asknilesh.dreamdate.navigation.DreamDateScreens
@@ -82,6 +83,7 @@ fun BuildForYouCard(
       model = model.posterImage,
       contentDescription = null,
       modifier = Modifier
+        .circularReveal(visible = true)
         .fillMaxWidth()
         .height(200.dp),
       contentScale = ContentScale.Crop

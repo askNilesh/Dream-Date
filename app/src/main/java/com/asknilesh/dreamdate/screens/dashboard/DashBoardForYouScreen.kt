@@ -36,6 +36,7 @@ import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
+import com.asknilesh.dreamdate.common_components.circularReveal
 import com.asknilesh.dreamdate.model.ForYouModel
 import com.asknilesh.dreamdate.model.getForYouPageList
 import com.asknilesh.dreamdate.navigation.DreamDateScreens
@@ -52,6 +53,7 @@ fun DashBoardForYouScreen(navController: NavController) {
       }
     }
   }
+
 }
 
 @Composable
@@ -60,7 +62,7 @@ fun BuildForYouCard(
   onCardClick: () -> Unit = {}
 ) {
 
-  Box(modifier = Modifier.padding(2.dp)
+  Box(modifier = Modifier.padding(2.dp) .circularReveal(visible = true)
     .clickable {
       onCardClick.invoke()
     }) {
@@ -69,7 +71,8 @@ fun BuildForYouCard(
       contentDescription = null,
       modifier = Modifier
         .fillMaxWidth()
-        .height(200.dp),
+        .height(200.dp)
+        .circularReveal(visible = true),
       contentScale = ContentScale.Crop
     )
     Column(

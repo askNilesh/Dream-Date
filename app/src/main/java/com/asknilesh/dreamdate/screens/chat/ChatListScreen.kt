@@ -36,21 +36,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.asknilesh.dreamdate.model.getChatList
+import com.asknilesh.dreamdate.navigation.DreamDateScreens
 import com.asknilesh.dreamdate.ui.theme.LightGrey
 
 @Composable
-@Preview
-fun ChatListScreen(navController: NavController = NavController(LocalContext.current)) {
+fun ChatListScreen(navController: NavController) {
   var searchQueryState by remember {
     mutableStateOf("")
   }
@@ -74,7 +72,7 @@ fun ChatListScreen(navController: NavController = NavController(LocalContext.cur
     ) {
       Text(
         text = "Chat",
-        fontSize = 30.sp,
+        fontSize = 24.sp,
         color = Color.White,
         fontWeight = FontWeight.Bold
       )
@@ -97,10 +95,13 @@ fun ChatListScreen(navController: NavController = NavController(LocalContext.cur
     BuildSearchTextField { query ->
       searchQueryState = query
     }
+    Spacer(modifier = Modifier.height(20.dp))
 
     LazyColumn {
       items(chatList) {
-        ChatCardItem(it)
+        ChatCardItem(it) {
+          navController.navigate(DreamDateScreens.CHAT_SCREEN.name)
+        }
       }
     }
   }
